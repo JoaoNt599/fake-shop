@@ -40,9 +40,9 @@ jobs:
       
       - uses: Azure/k8s-deploy@v5
         with:
-            manifests: |
-              k8s/deployment.yaml
-        images: | 
-           joaodev599/fake-shop-challenge:v${{ github.run_number }}
+          manifests: |
+            k8s/deployment.yaml
+          images: | 
+            joaodev599/fake-shop-challenge:v${{ github.run_number }}
       
     
