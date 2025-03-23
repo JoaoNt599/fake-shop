@@ -22,7 +22,7 @@ jobs:
           context: ./src
           push: true
           file: ./src/Dockerfile
-          tags: joaodev599/fake-shop-challenge:v1
+          tags: joaodev599/fake-shop-challenge:v2
 
       
       - run: echo "Push the Docker image to Docker Hub"
