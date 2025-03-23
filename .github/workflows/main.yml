@@ -37,12 +37,14 @@ jobs:
       #   with:
       #     method: kubeconfig
       #     kubeconfig: ${{ secrets.K8S_KUBECONFIG }}
-      
-      - uses: Azure/k8s-deploy@v5
-        with:
-          manifests: |
-            k8s/deployment.yaml
-          images: | 
-            joaodev599/fake-shop-challenge:v${{ github.run_number }}
+
+      - name: Deploy to Kubernetes
+        run: kubectl apply -f k8s/deployment.yaml --validate=false
+      # - uses: Azure/k8s-deploy@v5
+      #   with:
+      #     manifests: |
+      #       k8s/deployment.yaml
+      #     images: | 
+      #       joaodev599/fake-shop-challenge:v${{ github.run_number }}
       
     
