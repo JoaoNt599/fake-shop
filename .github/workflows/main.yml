@@ -22,16 +22,27 @@ jobs:
           context: ./src
           push: true
           file: ./src/Dockerfile
-          tags: joaodev599/fake-shop-challenge:v${{ github.run_number }}
+          tags: | 
+            joaodev599/fake-shop-challenge:v${{ github.run_number }}
+            joaodev599/fake-shop-challenge:latest
 
-      
-      - run: echo "Push the Docker image to Docker Hub"
   CD:
     needs: [CI]
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Get Code"
-      - run: echo "Configure kubeconfig"
-      - run: echo "Run the apply"
+      - name: Get Code
+        uses: actions/checkout@v4.2.2
+      # - uses: azure/k8s-set-context@v4
+
+      #   with:
+      #     method: kubeconfig
+      #     kubeconfig: ${{ secrets.K8S_KUBECONFIG }}
+      
+      - uses: Azure/k8s-deploy@v5
+        with:
+            manifests: |
+              k8s/deployment.yaml
+        images: | 
+           joaodev599/fake-shop-challenge:v${{ github.run_number }}
       
     
