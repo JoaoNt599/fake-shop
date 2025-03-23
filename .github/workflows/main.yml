@@ -38,8 +38,8 @@ jobs:
       #     method: kubeconfig
       #     kubeconfig: ${{ secrets.K8S_KUBECONFIG }}
 
-      # - name: Deploy to Kubernetes
-      #   run: kubectl apply -f k8s/deployment.yaml --validate=false
+      - name: Deploy to Kubernetes
+        run: kubectl apply -f k8s/deployment.yaml --validate=false
       # - uses: Azure/k8s-deploy@v5
       #   with:
       #     manifests: |
